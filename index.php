@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary Meta Tags -->
+  <title>Fvck Thread</title>
+  <meta name="title" content="Fvck Thread" />
+
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Fvck Thread" />
+  <meta property="og:image" content="https://ibb.co/Dr9JHSY" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Fvck Thread" />
+  <meta property="twitter:image" content="https://ibb.co/Dr9JHSY" />
+  <link rel="stylesheet" href="./styles/style.css" />
+  <title>Fvck Thread</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="brand">
+      <h1>Fvck Thread</h1>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="form-gen">
+      <form>
+        <label for="name">Name (ex: Naufal Farid)</label>
+        <input type="text" name="name" required />
+        <label for="username">Username (ex: naufalfaaa)</label>
+        <input type="text" name="username" required />
+        <label for="upload">Foto Profile</label>
+        <input type="file" name="upload" onchange="readURL(this)" />
+        iPhone : <input type="checkbox" onclick="isIphone()" class="iphone" />
+        <label for="thread">Thread</label>
+        <textarea name="thread" cols="30" rows="10" required></textarea>
+        <button type="submit">Generate!</button>
+      </form>
+    </div>
+    <div class="container-gen">
+      <div class="generated">
+        <div class="header-gen">
+          <div class="photo">
+            <img src="./assets/img/photo.jpg" class="pp-img" alt="photo" />
+          </div>
+          <div class="text">
+            <div class="head">
+              <h3 class="name">Naufal Farid</h3>
+              <img src="./assets/img/badge-dark.png" alt="badge" />
+            </div>
+            <p class="username">@naufalfaaa</p>
+          </div>
+        </div>
+        <div class="main-gen">
+          <p class="thread">
+            Bikin thread Twitter tanpa perlu bikin akun,
+            cukup masukin foto, nama, username dan quote suka suka. ON
+            DEVELOPMENT
+          </p>
+        </div>
+        <div class="footer-gen">
+          <p class="translate">Translate Tweet</p>
+          <div class="datetime">
+            <p>
+              <span class="time"><?php date_default_timezone_set('Asia/Jakarta');
+                echo date('G:i'); ?></span>・<span class="date"> <?php date_default_timezone_set('Asia/Jakarta');
+                echo date('d F Y'); ?> </span>・<span class="twitfor">Twitter for
+                Android</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <button class="save">Save</button>
+    </div>
+  </div>
+  <script src="./dom-to-image.min.js"></script>
+  <script src="./FileSaver.js"></script>
+  <script src="./app.js"></script>
+</body>
+
+</html>
