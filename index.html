@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('theme');
+    if(!t){ t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; }
+    document.documentElement.setAttribute('data-theme', t);
+  }catch(e){}
+})();
+</script>
+<title data-en="PortNaufal — Web Developer &amp; Graphic Designer" data-id="PortNaufal — Pengembang Web &amp; Desainer Grafis">PortNaufal — Web Developer &amp; Graphic Designer</title>
+<meta name="title" content="PortNaufal — Web Developer &amp; Graphic Designer">
+<meta name="description" content="PortNaufal / NauraMEDIA, freelance web developer & desainer visual di Semarang. Bangun website company profile, landing page, platform properti, dan desain konten sosial media brand.">
+<meta name="keywords" content="web developer semarang, jasa pembuatan website semarang, desain grafis semarang, freelance developer, landing page">
+<meta name="author" content="PortNaufal">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://naufalfarid.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://naufalfarid.github.io/">
+<meta property="og:title" content="PortNaufal — Web Developer & Desain Grafis di Semarang">
+<meta property="og:description" content="Portofolio website dan desain grafis brand yang dikerjakan PortNaufal / NauraMEDIA, berbasis di Semarang.">
+<meta property="og:image" content="https://naufalfarid.github.io/logo.jpg">
+<meta property="og:locale" content="id_ID">
+<meta property="og:site_name" content="PortNaufal">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://naufalfarid.github.io/">
+<meta property="twitter:title" content="NauraMEDIA — Web Developer & Desain Grafis di Semarang">
+<meta property="twitter:description" content="Portofolio website dan desain grafis brand yang dikerjakan PortNaufal / NauraMEDIA, berbasis di Semarang.">
+<meta property="twitter:image" content="https://naufalfarid.github.io/logo.jpg">
+
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+
+<meta name="theme-color" content="#0a0b08">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0b08;
+    --bg-soft:#0f1109;
+    --panel:#12140d;
+    --panel-2:#171a10;
+    --line:rgba(198,255,61,0.14);
+    --line-soft:rgba(243,245,234,0.08);
+    --lime:#c6ff3d;
+    --lime-dim:#93b62c;
+    --ink:#f3f5ea;
+    --muted:#9aa08c;
+    --muted-2:#666b57;
+    --radius:14px;
+    --maxw:1180px;
+  }
+
+  html[data-theme="light"]{
+    --bg:#f7f8f2;
+    --bg-soft:#eef0e4;
+    --panel:#ffffff;
+    --panel-2:#f1f3e9;
+    --line:rgba(76,120,20,0.22);
+    --line-soft:rgba(10,11,8,0.09);
+    --lime:#4a7010;
+    --lime-dim:#3a5a0c;
+    --ink:#14160d;
+    --muted:#565a48;
+    --muted-2:#82876f;
+  }
+  html[data-theme="light"] .btn-primary{color:#f7f8f2;}
+  html[data-theme="light"] .btn-primary:hover{background:#3a5a0c;color:#f7f8f2;}
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ul{margin:0;padding:0;list-style:none;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  section{scroll-margin-top:84px;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;
+    color:var(--lime-dim);margin-bottom:12px;text-transform:uppercase;
+  }
+
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+    outline:2px solid var(--lime);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .grid-texture{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 65%);
+    mask-image:linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 65%);
+    opacity:0.5;
+  }
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in-view{opacity:1;transform:none;}
+
+  header.site-nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:14px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+  }
+  .nav-utils{display:flex;align-items:center;gap:8px;}
+  .icon-btn{
+    width:38px;height:38px;border-radius:8px;border:1px solid var(--line-soft);
+    background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:center;
+    cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:12px;flex-shrink:0;
+    transition:border-color .18s ease, color .18s ease;
+  }
+  .icon-btn:hover{border-color:var(--lime);color:var(--lime);}
+  .icon-btn svg{width:18px;height:18px;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-mark{width:34px;height:34px;border-radius:0%;object-fit:cover;flex-shrink:0;}
+  .brand-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;}
+  .brand-name span{color:var(--lime);}
+
+  nav.nav-links{display:flex;align-items:center;gap:32px;}
+  nav.nav-links a{
+    font-size:13.5px;color:var(--muted);letter-spacing:0.02em;
+    transition:color .18s ease;
+  }
+  nav.nav-links a:hover{color:var(--ink);}
+
+  .pill-available{
+    display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);
+    padding:9px 16px;border-radius:999px;font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;letter-spacing:0.06em;color:var(--lime);cursor:pointer;
+    background:transparent;transition:background .18s ease;
+  }
+  .pill-available:hover{background:rgba(198,255,61,0.08);}
+  .pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);position:relative;flex-shrink:0;}
+  .pulse-dot::after{
+    content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--lime);
+    animation:pulse 2s ease-out infinite;
+  }
+  @keyframes pulse{0%{transform:scale(0.6);opacity:0.8;}100%{transform:scale(1.9);opacity:0;}}
+
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:.2s;}
+
+  .mobile-panel{
+    display:none;max-height:0;overflow:hidden;
+    background:var(--bg-soft);border-bottom:1px solid var(--line-soft);
+    transition:max-height .25s ease;
+  }
+  .mobile-panel.open{max-height:360px;}
+  .mobile-panel .wrap{padding:8px 28px 20px;display:flex;flex-direction:column;gap:4px;}
+  .mobile-panel a{padding:12px 4px;color:var(--muted);border-bottom:1px solid var(--line-soft);font-size:15px;}
+  .mobile-panel a:last-child{border-bottom:none;}
+
+  .arrow{display:inline-block;transition:transform .18s ease;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;border-radius:9px;font-size:15px;font-weight:500;
+    font-family:'Inter',sans-serif;cursor:pointer;border:1px solid transparent;
+    transition:transform .15s ease, background .18s ease, border-color .18s ease;
+  }
+  .btn:hover .arrow{transform:translateX(4px);}
+  .btn-primary{background:var(--lime);color:#0a0b08;}
+  .btn-primary:hover{transform:translateY(-2px);background:#d4ff66;}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--lime);}
+
+  .link-arrow{
+    display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--lime);
+    border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .18s ease;
+  }
+  .link-arrow:hover{border-color:var(--lime);}
+  .link-arrow:hover .arrow{transform:translateX(4px);}
+
+  .tag-pill{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--lime-dim);
+    border:1px solid var(--line);padding:3px 8px;border-radius:5px;
+  }
+  .tag-row{display:flex;gap:6px;flex-wrap:wrap;}
+
+  .hero{position:relative;z-index:1;padding:168px 0 110px;}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
+  .hero-kicker{font-size:15px;color:var(--muted);margin-bottom:18px;}
+  .hero-kicker b{color:var(--ink);font-weight:500;}
+  .hero h1{font-size:clamp(34px,4.4vw,54px);line-height:1.12;color:var(--ink);}
+  .hero h1 em{font-style:normal;color:var(--lime);}
+  .hero-desc{margin-top:22px;font-size:17px;color:var(--muted);max-width:46ch;}
+  .hero-actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;}
+
+  .hero-visual{position:relative;display:flex;justify-content:center;padding-bottom:34px;}
+  .hero-visual::before{
+    content:"";position:absolute;top:-40px;right:10%;width:240px;height:240px;
+    background:radial-gradient(circle, rgba(198,255,61,0.18), transparent 70%);
+    pointer-events:none;
+  }
+  .visual-circle{
+    width:300px;height:300px;border-radius:50%;
+    background:var(--panel);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+    box-shadow:0 30px 80px -30px rgba(0,0,0,0.7);
+  }
+  .visual-circle img{width:58%;height:58%;object-fit:contain;}
+  .floating-badge{
+    position:absolute;left:-10px;bottom:0;
+    background:color-mix(in srgb, var(--panel) 92%, transparent);backdrop-filter:blur(10px);
+    border:1px solid var(--line);border-radius:12px;padding:16px 20px;
+    box-shadow:0 20px 50px -25px rgba(0,0,0,0.8);
+    min-width:210px;
+  }
+  .floating-badge strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:16px;}
+  .floating-badge span{display:block;font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.4;}
+  .floating-badge em{display:block;font-style:normal;font-size:11.5px;color:var(--lime-dim);margin-top:8px;font-family:'JetBrains Mono',monospace;}
+
+  .section-head{max-width:60ch;margin-bottom:44px;}
+  .section-head h2{font-size:clamp(26px,3vw,34px);}
+  .section-head p{margin-top:12px;color:var(--muted);font-size:16px;}
+
+  section.block{padding:88px 0;position:relative;z-index:1;}
+  section.block.alt{background:var(--bg-soft);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+
+  .about-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:56px;align-items:start;}
+  .location-tag{
+    display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;
+    font-size:12px;color:var(--muted);border:1px solid var(--line-soft);padding:6px 12px;border-radius:999px;
+    margin-top:16px;
+  }
+  .about-copy p{color:var(--muted);margin-top:16px;font-size:15.5px;}
+  .about-copy p:first-of-type{margin-top:22px;}
+  .facts-row{display:flex;gap:0;margin-top:8px;}
+  .facts-row div{border-left:1px solid var(--line);padding:0 24px;}
+  .facts-row div:first-child{padding-left:0;}
+  .facts-row b{display:block;font-family:'Space Grotesk',sans-serif;font-size:26px;color:var(--lime);}
+  .facts-row span{font-size:12.5px;color:var(--muted-2);}
+
+  .cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .cap-card{
+    background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;padding:26px 22px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .cap-card:hover{border-color:var(--line);transform:translateY(-4px);}
+  .cap-icon{width:38px;height:38px;color:var(--lime);margin-bottom:16px;}
+  .cap-card h3{font-size:16.5px;}
+  .cap-card p{margin-top:10px;font-size:13.5px;color:var(--muted);line-height:1.55;}
+  .cap-card .tag-row{margin-top:16px;}
+
+  .work-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:80px;}
+  .work-row:last-child{margin-bottom:0;}
+  .work-row:nth-of-type(even) .work-media{order:2;}
+
+  .work-media{position:relative;}
+  .browser-bar{
+    display:flex;align-items:center;gap:6px;padding:9px 12px;
+    background:var(--panel-2);border:1px solid var(--line-soft);border-bottom:none;
+    border-radius:12px 12px 0 0;
+  }
+  .browser-bar i{width:7px;height:7px;border-radius:50%;background:var(--muted-2);display:block;}
+  .browser-url{
+    margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:10.5px;
+    color:var(--muted-2);background:var(--bg-soft);padding:3px 9px;border-radius:5px;
+    flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .work-preview{
+    height:260px;position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--panel);border:1px solid var(--line-soft);border-radius:0 0 12px 12px;
+  }
+  .work-preview img{width:100%;height:100%;object-fit:cover;}
+  .mock-dash{width:100%;height:100%;padding:22px;display:flex;gap:14px;}
+  .mock-dash .side{width:24%;border-radius:8px;background:rgba(243,245,234,0.05);padding:12px 9px;display:flex;flex-direction:column;gap:8px;}
+  .mock-dash .side i{display:block;height:7px;border-radius:3px;background:rgba(243,245,234,0.09);}
+  .mock-dash .side i:first-child{background:var(--lime);opacity:0.6;width:70%;}
+  .mock-dash .main{flex:1;display:flex;flex-direction:column;gap:10px;}
+  .mock-dash .row{height:10px;border-radius:3px;background:rgba(243,245,234,0.07);}
+  .mock-dash .row.w60{width:60%;}
+  .mock-dash .row.w80{width:80%;}
+  .mock-dash .cards{display:flex;gap:9px;margin-top:4px;flex:1;}
+  .mock-dash .cards em{flex:1;border-radius:7px;background:rgba(198,255,61,0.07);border:1px solid rgba(198,255,61,0.12);font-style:normal;}
+  .mock-initial{
+    position:absolute;right:16px;bottom:10px;
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:70px;
+    color:rgba(243,245,234,0.05);line-height:1;pointer-events:none;
+  }
+  .zoom-btn{
+    position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;
+    background:rgba(10,11,8,0.75);border:1px solid var(--line);color:var(--ink);
+    font-size:13px;cursor:pointer;opacity:0;transition:opacity .18s ease;z-index:2;
+  }
+  .work-preview:hover .zoom-btn, .brand-tile:hover .zoom-btn{opacity:1;}
+
+  .work-content .w-meta{display:flex;gap:14px;align-items:center;margin-bottom:10px;}
+  .work-content .w-year{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted-2);}
+  .work-content .w-cat{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--lime-dim);letter-spacing:0.05em;text-transform:uppercase;}
+  .work-content h3{font-size:22px;}
+  .work-content p.w-desc{margin-top:12px;color:var(--muted);font-size:15px;max-width:46ch;}
+  .work-content .tag-row{margin-top:16px;}
+  .work-content .link-arrow{margin-top:20px;}
+
+  .brand-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .brand-tile{
+    position:relative;aspect-ratio:1/1;border-radius:10px;overflow:hidden;
+    border:1px solid var(--line-soft);
+  }
+  .brand-tile img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+  .brand-tile .fallback-letter{
+    width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:rgba(10,11,8,0.65);
+  }
+  .brand-tile .overlay{
+    position:absolute;inset:0;background:rgba(10,11,8,0.82);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    opacity:0;transition:opacity .18s ease;padding:10px;text-align:center;
+  }
+  .brand-tile:hover .overlay{opacity:1;}
+  .overlay .bname{font-family:'Space Grotesk',sans-serif;font-size:13.5px;color:var(--ink);}
+  .overlay .link-arrow{font-size:11.5px;}
+
+  .background-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .background-col h3{font-size:14px;font-family:'JetBrains Mono',monospace;color:var(--muted-2);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:24px;}
+  .timeline-item{position:relative;padding-left:26px;padding-bottom:26px;border-left:1px solid var(--line);}
+  .timeline-item:last-child{border-left-color:transparent;padding-bottom:0;}
+  .timeline-item::before{
+    content:"";position:absolute;left:-5px;top:2px;width:9px;height:9px;border-radius:50%;
+    background:var(--lime);box-shadow:0 0 0 4px var(--bg-soft);
+  }
+  .timeline-item .t-year{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--lime-dim);}
+  .timeline-item h4{margin-top:6px;font-size:15.5px;color:var(--ink);}
+  .timeline-item p{margin-top:5px;font-size:13.5px;color:var(--muted);}
+
+  .cred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .cred-card{background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;padding:22px;}
+  .cred-card .c-top{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-2);}
+  .cred-card h4{margin-top:10px;font-size:15px;line-height:1.4;}
+  .cred-card .c-cat{margin-top:14px;}
+  .cred-card .link-arrow{margin-top:16px;font-size:12.5px;}
+
+  .contact .wrap{display:grid;grid-template-columns:0.85fr 1.15fr;gap:64px;}
+  .contact-info p{margin-top:14px;color:var(--muted);max-width:42ch;}
+  .contact-list{margin-top:32px;display:flex;flex-direction:column;gap:16px;}
+  .contact-list a{
+    display:flex;align-items:center;gap:12px;font-size:15px;color:var(--ink);
+    padding-bottom:14px;border-bottom:1px solid var(--line-soft);
+    transition:color .18s ease;
+  }
+  .contact-list a:hover{color:var(--lime);}
+  .c-icon{
+    width:34px;height:34px;border-radius:8px;background:var(--panel-2);border:1px solid var(--line-soft);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;
+  }
+
+  form.contact-form{background:var(--panel);border:1px solid var(--line-soft);border-radius:14px;padding:32px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px;}
+  .field input,.field textarea{
+    width:100%;background:var(--bg-soft);border:1px solid var(--line-soft);border-radius:8px;
+    padding:12px 14px;color:var(--ink);font-family:'Inter',sans-serif;font-size:14.5px;
+    transition:border-color .18s ease;
+  }
+  .field input:focus,.field textarea:focus{border-color:var(--lime);outline:none;}
+  .field textarea{resize:vertical;min-height:110px;}
+  .form-note{font-size:12.5px;color:var(--muted-2);margin-top:14px;}
+  .form-status{font-size:13.5px;margin-top:14px;color:var(--lime);display:none;}
+
+  .lightbox{
+    position:fixed;inset:0;background:rgba(6,7,4,0.92);z-index:200;
+    display:none;align-items:center;justify-content:center;padding:40px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:90vw;max-height:85vh;border-radius:10px;border:1px solid var(--line);}
+  .lightbox-close{
+    position:absolute;top:24px;right:28px;background:none;border:1px solid var(--line);
+    color:var(--ink);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:15px;
+  }
+
+  footer{border-top:1px solid var(--line-soft);padding:32px 0;position:relative;z-index:1;}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+  footer .f-brand{font-size:14px;color:var(--muted);}
+  footer .f-social{display:flex;gap:18px;}
+  footer .f-social a{font-size:13.5px;color:var(--muted);transition:color .18s ease;}
+  footer .f-social a:hover{color:var(--lime);}
+
+  @media (max-width:980px){
+    nav.nav-links{display:none;}
+    .pill-available.desktop-only{display:none;}
+    .nav-toggle{display:block;}
+    .mobile-panel{display:block;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero{padding:140px 0 64px;}
+    .hero-visual{order:-1;}
+    .about-grid{grid-template-columns:1fr;gap:32px;}
+    .cap-grid{grid-template-columns:repeat(2,1fr);}
+    .work-row{grid-template-columns:1fr;gap:24px;margin-bottom:56px;}
+    .work-row:nth-of-type(even) .work-media{order:0;}
+    .brand-grid{grid-template-columns:repeat(3,1fr);}
+    .background-grid{grid-template-columns:1fr;gap:44px;}
+    .cred-grid{grid-template-columns:1fr 1fr;}
+    .contact .wrap{grid-template-columns:1fr;gap:40px;}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 20px;}
+    .cap-grid{grid-template-columns:1fr;}
+    .brand-grid{grid-template-columns:repeat(2,1fr);}
+    .cred-grid{grid-template-columns:1fr;}
+    .facts-row{flex-wrap:wrap;row-gap:16px;}
+    .facts-row div{padding:0 18px;}
+    .form-row{grid-template-columns:1fr;}
+    form.contact-form{padding:22px;}
+    .hero-actions{flex-direction:column;align-items:stretch;}
+    .visual-circle{width:220px;height:220px;}
+    .floating-badge{left:0;min-width:0;padding:14px 16px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    *{animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-texture" aria-hidden="true"></div>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#beranda" class="brand">
+      <img class="brand-mark" src="logo.png" alt="NauraMEDIA">
+      <span class="brand-name">Port<span>Naufal</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#tentang" data-en="About" data-id="Tentang">About</a>
+      <a href="#layanan" data-en="Service" data-id="Layanan">Service</a>
+      <a href="#web" data-en="Website" data-id="Website">Website</a>
+      <a href="#desain" data-en="Design" data-id="Desain">Design</a>
+      <a href="#kontak" data-en="Contact" data-id="Kontak">Contact</a>
+    </nav>
+    <div class="nav-utils">
+      <button class="icon-btn" id="langToggle" aria-label="Switch language / Ganti bahasa" title="Switch language / Ganti bahasa">
+        <span id="langLabel">ID</span>
+      </button>
+      <button class="icon-btn" id="themeToggle" aria-label="Switch theme / Ganti tema" title="Switch theme / Ganti tema">
+        <svg id="themeIconDark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg id="themeIconLight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <button class="pill-available desktop-only" onclick="document.getElementById('kontak').scrollIntoView()">
+        <span class="pulse-dot"></span> <span data-en="Available" data-id="Tersedia">Available</span>
+      </button>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <div class="wrap">
+      <a href="#tentang" data-en="About" data-id="Tentang">About</a>
+      <a href="#layanan" data-en="Service" data-id="Layanan">Service</a>
+      <a href="#web" data-en="Website" data-id="Website">Website</a>
+      <a href="#desain" data-en="Design" data-id="Desain">Design</a>
+      <a href="#kontak" data-en="Contact" data-id="Kontak">Contact</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="beranda">
+  <div class="wrap">
+    <div>
+      <div class="hero-kicker"><b>PortNaufal</b> <span data-en="— Web Developer &amp; Graphic Designer, in Semarang." data-id="— Pengembang Web &amp; Desainer Grafis, di Semarang.">— Web Developer &amp; Graphic Designer, in Semarang.</span></div>
+      <h1 data-en="Building digital products &amp; experiences." data-id="Membangun produk digital &amp; pengalaman visual.">Building digital products & experiences.</h1>
+      <p class="hero-desc" data-en="I am an Indonesia-based Web Developer and Graphic Designer. I have experience in website development, graphic design, and modern UI/UX design. I always prioritize quality, performance, and an exceptional user experience in every project I undertake." data-id="Saya adalah Web Developer dan Graphic Designer yang berbasis di Indonesia. Saya berpengalaman di pengembangan website, desain grafis, dan desain UI/UX modern. Saya selalu mengutamakan kualitas, performa, dan pengalaman pengguna yang maksimal di setiap proyek.">I am an Indonesia-based Web Developer and Graphic Designer. I have experience in website development, graphic design, and modern UI/UX design. I always prioritize quality, performance, and an exceptional user experience in every project I undertake.</p>
+      <div class="hero-actions">
+        <a href="#web" class="btn btn-primary"><span data-en="See Project" data-id="Lihat Proyek">See Project</span> <span class="arrow">→</span></a>
+        <a href="#kontak" class="btn btn-ghost" data-en="Contact Me" data-id="Hubungi Saya">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+        <img src="logo.png" alt="NauraMEDIA">
+      <div class="floating-badge">
+        <strong>Naufal</strong>
+        <span data-en="Full-Stack Web Developer &amp; Visual Designer" data-id="Full-Stack Web Developer &amp; Desainer Visual">Full-Stack Web Developer &amp; Visual Designer</span>
+        <em>📍 Semarang, ID</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="tentang">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="eyebrow" data-en="About" data-id="Tentang">About</div>
+        <h2 data-en="Combining technical precision with a clean design approach." data-id="Menggabungkan kerapian teknis dengan pendekatan desain yang bersih.">Combining technical precision with a clean design approach.</h2>
+        <span class="location-tag" data-en="📍 Stay in Semarang, ID" data-id="📍 Berbasis di Semarang, ID">📍 Stay in Semarang, ID</span>
+      </div>
+      <div class="about-copy reveal">
+        <p data-en="I handle the website from both technical and visual perspectives ranging from database structure and hosting deployment to creating an interface that is visually appealing and easy for the client to use on a daily basis." data-id="Saya menangani website dari sisi teknis maupun visual — mulai dari struktur database dan deployment hosting, sampai membuat interface yang enak dilihat dan mudah dipakai klien sehari-hari.">I handle the website from both technical and visual perspectives ranging from database structure and hosting deployment to creating an interface that is visually appealing and easy for the client to use on a daily basis.</p>
+        <p data-en="In addition to coding, I also frequently handle the brand's social media design needs ranging from feed posts and promotional materials to highlight covers to ensure the visual style remains consistent with the website." data-id="Selain koding, saya juga cukup sering menangani kebutuhan desain sosial media brand — mulai dari feed, materi promosi, sampai highlight cover — supaya gaya visualnya tetap konsisten dengan website.">In addition to coding, I also frequently handle the brand's social media design needs ranging from feed posts and promotional materials to highlight covers to ensure the visual style remains consistent with the website.</p>
+        <div class="facts-row">
+          <div><b>18+</b><span data-en="The website was built." data-id="Website dibangun">The website was built.</span></div>
+          <div><b>30+</b><span data-en="Brand managed" data-id="Brand ditangani">Brand managed</span></div>
+          <div><b>100%</b><span data-en="Done independently" data-id="Dikerjakan sendiri">Done independently</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="layanan">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-en="Service" data-id="Layanan">Service</div>
+      <h2 data-en="Skill &amp; Service" data-id="Keahlian &amp; Layanan">Skill &amp; Service</h2>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card reveal">
+        <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 6L2 12l6 6M16 6l6 6-6 6"/></svg>
+        <h3 data-en="Web Developer" data-id="Pengembang Web">Web Developer</h3>
+        <p data-en="Building a website from scratch using PHP, JavaScript, and MySQL with a clean and secure structure." data-id="Membangun website dari nol menggunakan PHP, JavaScript, dan MySQL dengan struktur yang rapi dan aman.">Building a website from scratch using PHP, JavaScript, and MySQL with a clean and secure structure.</p>
+        <div class="tag-row"><span class="tag-pill">PHP</span><span class="tag-pill">MySQL</span><span class="tag-pill">JavaScript</span></div>
+      </div>
+      <div class="cap-card reveal">
+        <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg>
+        <h3 data-en="Frontend &amp; Interface" data-id="Frontend &amp; Antarmuka">Frontend &amp; Interface</h3>
+        <p data-en="Create a clean, fast, and responsive design across all screen sizes." data-id="Membuat desain yang bersih, cepat, dan responsif di semua ukuran layar.">Create a clean, fast, and responsive design across all screen sizes.</p>
+        <div class="tag-row"><span class="tag-pill">HTML/CSS</span><span class="tag-pill">Responsive</span><span class="tag-pill">SPA</span></div>
+      </div>
+      <div class="cap-card reveal">
+        <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+        <h3 data-en="Optimization &amp; Deploy" data-id="Optimasi &amp; Deploy">Optimization &amp; Deploy</h3>
+        <p data-en="Set up hosting, caching, clean URLs, and SEO optimization to ensure the website is lightweight and easy to find." data-id="Setup hosting, caching, clean URL, dan optimasi SEO supaya website ringan dan mudah ditemukan.">Set up hosting, caching, clean URLs, and SEO optimization to ensure the website is lightweight and easy to find.</p>
+        <div class="tag-row"><span class="tag-pill">SEO</span><span class="tag-pill">cPanel</span><span class="tag-pill">Cache</span></div>
+      </div>
+      <div class="cap-card reveal">
+        <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 000 18 4 4 0 010-8 3 3 0 000-6"/></svg>
+        <h3 data-en="Visual Design" data-id="Desain Visual">Visual Design</h3>
+        <p data-en="Social media content for brands ranging from the feed and promotions to consistent highlight covers." data-id="Konten sosial media untuk brand, mulai dari feed dan promosi sampai highlight cover yang konsisten.">Social media content for brands ranging from the feed and promotions to consistent highlight covers.</p>
+        <div class="tag-row"><span class="tag-pill">Social Media</span><span class="tag-pill">Branding</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="web">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-en="Portfolio" data-id="Portofolio">Portfolio</div>
+      <h2 data-en="Live website" data-id="Website yang Sudah Live">Live website</h2>
+      <p data-en="Some recent projects. Click the magnifying glass icon to view a larger version, or visit the site directly." data-id="Beberapa proyek terakhir. Klik ikon kaca pembesar untuk lihat versi lebih besar, atau kunjungi situsnya langsung.">Some recent projects. Click the magnifying glass icon to view a larger version, or visit the site directly.</p>
+    </div>
+    <div id="workList"></div>
+  </div>
+</section>
+
+
+<section class="block alt" id="desain">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-en="Portfolio" data-id="Portofolio">Portfolio</div>
+      <h2 data-en="Design for the brand" data-id="Desain untuk Brand">Design for the brand</h2>
+      <p data-en="Social media content I helped create from scratch from feed posts and promotions to highlight covers." data-id="Konten sosial media yang saya bantu buat dari nol — dari feed, promosi, sampai highlight cover.">Social media content I helped create from scratch from feed posts and promotions to highlight covers.</p>
+    </div>
+    <div class="brand-grid reveal" id="brandGrid"></div>
+  </div>
+</section>
+
+
+<section class="block" id="pengalaman">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-en="Background" data-id="Latar Belakang">Background</div>
+      <h2 data-en="Education &amp; Experience" data-id="Pendidikan &amp; Pengalaman">Education &amp; Experience</h2>
+    </div>
+    <div class="background-grid">
+      <div class="background-col reveal">
+        <h3 data-en="Education" data-id="Pendidikan">Education</h3>
+        <div class="timeline-item">
+          <span class="t-year mono">2018 — 2021</span>
+          <h4>SMK N 3 KENDAL</h4>
+          <p data-en="Software Engineering" data-id="Rekayasa Perangkat Lunak">Software Engineering</p>
+        </div>
+      </div>
+      <div class="background-col reveal">
+        <h3 data-en="Experience" data-id="Pengalaman">Experience</h3>
+        <div class="timeline-item">
+          <span class="t-year mono" data-en="2023 — Now" data-id="2023 — Sekarang">2023 — Now</span>
+          <h4>Darmawan Group - Web Developer &amp; Graphic Designer</h4>
+          <p data-en="Handling website and visual design projects for an F&amp;B company in Semarang." data-id="Menangani proyek website dan desain visual untuk perusahaan F&amp;B di Semarang.">Handling website and visual design projects for an F&B company in Semarang.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="t-year mono" data-en="2025 — Now" data-id="2025 — Sekarang">2025 — Now</span>
+          <h4>Propertiku Semarang - Freelance Web Developer &amp; Graphic Designer</h4>
+          <p data-en="Handling website and visual design projects for a property and asset trading company in Semarang." data-id="Menangani proyek website dan desain visual untuk perusahaan jual-beli properti dan aset di Semarang.">Handling website and visual design projects for a property and asset trading company in Semarang.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="t-year mono" data-en="2025 — Now" data-id="2025 — Sekarang">2025 — Now</span>
+          <h4>TumbuhLand - Freelance Web Developer &amp; Graphic Designer</h4>
+          <p data-en="Handling website and visual design projects for a property and asset trading company in Semarang." data-id="Menangani proyek website dan desain visual untuk perusahaan jual-beli properti dan aset di Semarang.">Handling website and visual design projects for a property and asset trading company in Semarang.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="t-year mono">2023 — 2024</span>
+          <h4>Swaprint.ID - Graphic Designer</h4>
+          <p data-en="Handling visual design projects for clients' print needs." data-id="Menangani proyek desain visual untuk kebutuhan cetak klien.">Handling visual design projects for clients' print needs.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="t-year mono">2022 — 2023</span>
+          <h4>Abna Parfum - Graphic Designer</h4>
+          <p data-en="Handling visual design projects for print and social media for a perfume shop." data-id="Menangani proyek desain visual cetak dan sosial media untuk toko parfum.">Handling visual design projects for print and social media for a perfume shop.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block contact" id="kontak">
+  <div class="wrap">
+    <div class="contact-info reveal">
+      <div class="eyebrow" data-en="Contact Me" data-id="Hubungi Saya">Contact Me</div>
+      <h2 data-en="Let's start a project together." data-id="Yuk, mulai proyek bareng.">Let's start a project together.</h2>
+      <p data-en="Fill out the form next to this; it will go directly to my WhatsApp, and we can follow up from there." data-id="Isi form di samping ini, nanti langsung masuk ke WhatsApp saya dan bisa kita follow up dari sana.">Fill out the form next to this; it will go directly to my WhatsApp, and we can follow up from there.</p>
+      <div class="contact-list">
+        <a href="https://wa.me/6285760692726" target="_blank" rel="noopener">
+          <span class="c-icon">💬</span> +62 857-6069-2726
+        </a>
+        <a href="mailto:hello@nauramedia.com">
+          <span class="c-icon">✉️</span> naufalfarid964@gmail.com
+        </a>
+        <a href="https://instagram.com/naura_media" target="_blank" rel="noopener">
+          <span class="c-icon">◎</span> @naura_media / @naufalstfrd
+        </a>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" id="contactForm">
+      <div class="form-row">
+        <div class="field">
+          <label for="f-nama" data-en="Name" data-id="Nama">Name</label>
+          <input id="f-nama" name="nama" type="text" required placeholder="Your Name" data-en-placeholder="Your Name" data-id-placeholder="Nama Kamu">
+        </div>
+        <div class="field">
+          <label for="f-hp" data-en="WhatsApp Number" data-id="No HP / WhatsApp">No WhatsApp</label>
+          <input id="f-hp" name="hp" type="tel" required placeholder="08xxxxxxxxxx">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" required placeholder="nama@email.com">
+      </div>
+      <div class="field">
+        <label for="f-pesan" data-en="Message" data-id="Pesan">Massage</label>
+        <textarea id="f-pesan" name="pesan" required placeholder="Tell us about the project you need..." data-en-placeholder="Tell us about the project you need..." data-id-placeholder="Ceritakan proyek yang kamu butuhkan..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" data-en="Send to WhatsApp" data-id="Kirim ke WhatsApp">Send to WhatsApp</button>
+      <p class="form-note" data-en="The button above will open WhatsApp with your message pre-filled." data-id="Tombol di atas akan membuka WhatsApp dengan pesan kamu yang sudah terisi otomatis.">The button above will open WhatsApp with your message pre-filled.</p>
+      <p class="form-status" id="formStatus" data-en="Opening WhatsApp…" data-id="Membuka WhatsApp…">Opening WhatsApp…</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="f-brand">© <span id="year"></span> PortNaufal. <span data-en="Developed by Naufalstfrd." data-id="Dikembangkan oleh Naufalstfrd.">Developed by Naufalstfrd.</span></span>
+    <div class="f-social">
+      <a href="https://instagram.com/naura_media" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:naufalfarid964@gmail.com">Email</a>
+      <a href="https://wa.me/6285760692726" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+
+const WA_NUMBER = "6285760692726";
+
+const webProjects = [
+  {
+    name: "Propertiku Semarang",
+    url: "https://propertikusemarang.com",
+    domain: "propertikusemarang.com",
+    year: "2024 — Now",
+    yearId: "2024 — Sekarang",
+    category: "Platform Property",
+    categoryId: "Platform Properti",
+    tags: ["PHP", "MySQL", "cPanel"],
+    description: "A native PHP-based property listing platform hosted on shared hosting, featuring security hardening, SEO-friendly clean URLs, and a redesigned UI.",
+    descriptionId: "Platform listing properti berbasis PHP native di shared hosting, dengan hardening keamanan, clean URL SEO-friendly, dan UI yang didesain ulang.",
+    image: "web/jdiwqdjqfaf.png"
+  },
+  {
+    name: "TumbuhLand",
+    url: "https://tumbuhland.com",
+    domain: "tumbuhland.com",
+    year: "2025 - Now",
+    yearId: "2025 — Sekarang",
+    category: "Platform Property",
+    categoryId: "Platform Properti",
+    tags: ["PHP", "MySQL", "cPanel"],
+    description: "A native PHP-based property listing platform hosted on shared hosting, featuring security hardening, SEO-friendly clean URLs, and a redesigned UI.",
+    descriptionId: "Platform listing properti berbasis PHP native di shared hosting, dengan hardening keamanan, clean URL SEO-friendly, dan UI yang didesain ulang.",
+    image: "web/fqfqe21eqjfoed.png"
+  },
+  {
+    name: "Teh Desa Indonesia",
+    url: "https://tehdesaindonesia.github.io",
+    domain: "tehdesaindonesia.github.io",
+    year: "2023 - Now",
+    yearId: "2023 — Sekarang",
+    category: "Static Site",
+    categoryId: "Situs Statis",
+    tags: ["Static", "GitHub Pages", "HTML, CSS", "JS"],
+    description: "A partnership platform built on pure HTML, CSS, and JS and hosted on a shared hosting service, featuring tailored functionality, SEO-friendly clean URLs, and a redesigned user interface (UI).",
+    descriptionId: "Platform kemitraan yang dibangun dengan HTML, CSS, dan JS murni, dengan fungsi yang disesuaikan, clean URL SEO-friendly, dan antarmuka pengguna (UI) yang didesain ulang.",
+    image: "web/fewfqfqrwerqr.png"
+  },
+  {
+    name: "Teh Wasgitel Indonesia",
+    url: "https://tehwasgitelindonesia.github.io",
+    domain: "tehwasgitelindonesia.github.io",
+    year: "2024 - Now",
+    yearId: "2024 — Sekarang",
+    category: "Static Site",
+    categoryId: "Situs Statis",
+    tags: ["Static", "GitHub Pages", "HTML, CSS", "JS"],
+    description: "A partnership platform built on pure HTML, CSS, and JS and hosted on a shared hosting service, featuring tailored functionality, SEO-friendly clean URLs, and a redesigned user interface (UI).",
+    descriptionId: "Platform kemitraan yang dibangun dengan HTML, CSS, dan JS murni, dengan fungsi yang disesuaikan, clean URL SEO-friendly, dan antarmuka pengguna (UI) yang didesain ulang.",
+    image: "web/fewqfqwdr.png"
+  },
+  {
+    name: "Teh Jabrik",
+    url: "https://tehjabrik.github.io",
+    domain: "tehjabrik.github.io",
+    year: "2025 - Now",
+    yearId: "2025 — Sekarang",
+    category: "Static Site",
+    categoryId: "Situs Statis",
+    tags: ["Static", "GitHub Pages", "HTML, CSS", "JS"],
+    description: "A partnership platform built on pure HTML, CSS, and JS and hosted on a shared hosting service, featuring tailored functionality, SEO-friendly clean URLs, and a redesigned user interface (UI).",
+    descriptionId: "Platform kemitraan yang dibangun dengan HTML, CSS, dan JS murni, dengan fungsi yang disesuaikan, clean URL SEO-friendly, dan antarmuka pengguna (UI) yang didesain ulang.",
+    image: "web/wefwetr235r.png"
+  },
+  {
+    name: "Koptea Indonesia",
+    url: "https://koptea.github.io",
+    domain: "koptea.github.io",
+    year: "2025 - Now",
+    yearId: "2025 — Sekarang",
+    category: "Static Site",
+    categoryId: "Situs Statis",
+    tags: ["Static", "GitHub Pages", "HTML, CSS", "JS"],
+    description: "A partnership platform built on pure HTML, CSS, and JS and hosted on a shared hosting service, featuring tailored functionality, SEO-friendly clean URLs, and a redesigned user interface (UI).",
+    descriptionId: "Platform kemitraan yang dibangun dengan HTML, CSS, dan JS murni, dengan fungsi yang disesuaikan, clean URL SEO-friendly, dan antarmuka pengguna (UI) yang didesain ulang.",
+    image: "web/grgtwerewr.png"
+  },
+  {
+    name: "Brother Car Wash & Detailing",
+    url: "https://brothercarwash.github.io",
+    domain: "brothercarwash.github.io",
+    year: "2024 - Now",
+    yearId: "2024 — Sekarang",
+    category: "Static Site",
+    categoryId: "Situs Statis",
+    tags: ["Static", "GitHub Pages", "HTML, CSS", "JS"],
+    description: "A car wash and detailing platform built using pure HTML, CSS, and JS, featuring essential functionalities, SEO-friendly clean URLs, and a user interface (UI).",
+    descriptionId: "Platform cuci dan detailing mobil yang dibangun dengan HTML, CSS, dan JS murni, dengan fungsi-fungsi penting, clean URL SEO-friendly, dan antarmuka pengguna (UI).",
+    image: "web/egwt32rrfae.png"
+  },
+  {
+    name: "Bengkel Gerobak Darmawan",
+    url: "https://bengkelgerobakdarmawan-eng.github.io",
+    domain: "bengkelgerobakdarmawan-eng.github.io",
+    year: "2023 - Now",
+    yearId: "2023 — Sekarang",
+    category: "Static Site",
+    categoryId: "Situs Statis",
+    tags: ["Static", "GitHub Pages", "HTML, CSS", "JS"],
+    description: "A platform for manufacturing container booths and sales carts, built using pure HTML, CSS, and JS, featuring custom functionality, SEO-friendly clean URLs, and a user interface (UI).",
+    descriptionId: "Platform untuk manufaktur booth kontainer dan gerobak jualan, dibangun dengan HTML, CSS, dan JS murni, dengan fungsi khusus, clean URL SEO-friendly, dan antarmuka pengguna (UI).",
+    image: "web/fgwegrwtwt.png"
+  }
+];
+
+// Brand desain grafis. "image" boleh dikosongkan -> otomatis pakai warna + huruf awal.
+const brands = [
+  { name: "Djalan Kopi", link: "https://www.instagram.com/djalan.kopi/", image: "brand/dj.png" },
+  { name: "Aureva Scent", link: "https://www.instagram.com/aureva.scnt/", image: "brand/au.png" },
+  { name: "Mads Coffee", link: "https://www.instagram.com/madskopi/", image: "brand/mads.png" },
+  { name: "Propertiku Semarang", link: "https://www.instagram.com/propertikusemarang/", image: "brand/ps.png" },
+  { name: "TumbuhLand", link: "#", image: "brand/tl.png" },
+  { name: "Teh Desa Indonesia", link: "https://www.instagram.com/tehdesa_indonesia/", image: "brand/tdi.png" },
+  { name: "Teh Wasgitel Indonesia", link: "https://www.instagram.com/tehwasgitel_indonesia/", image: "brand/twi.png" },
+  { name: "Teh Jabrik", link: "https://www.instagram.com/teh_jabrik/", image: "brand/tj.png" },
+  { name: "Brother Car Wash", link: "https://www.instagram.com/brother_carwashdetailing/", image: "brand/bcw.png" },
+  { name: "Tangan Kanan Coffee", link: "https://www.instagram.com/tangankanan.coffee/", image: "brand/taka.png" }
+];
+
+/* ========================================================= */
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* =========================================================
+   BAHASA (ID/EN) & TEMA (Gelap/Terang)
+   ========================================================= */
+let currentLang = localStorage.getItem('lang') || 'en';
+let currentTheme = localStorage.getItem('theme') ||
+  (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+
+function applyTheme(theme){
+  currentTheme = theme;
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('themeIconDark').style.display = theme === 'dark' ? 'block' : 'none';
+  document.getElementById('themeIconLight').style.display = theme === 'light' ? 'block' : 'none';
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if(metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#f7f8f2' : '#0a0b08');
+  localStorage.setItem('theme', theme);
+}
+
+function applyLang(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-en][data-id]').forEach(el => {
+    el.textContent = lang === 'id' ? el.dataset.id : el.dataset.en;
+  });
+  document.querySelectorAll('[data-en-placeholder][data-id-placeholder]').forEach(el => {
+    el.placeholder = lang === 'id' ? el.dataset.idPlaceholder : el.dataset.enPlaceholder;
+  });
+  document.getElementById('langLabel').textContent = lang === 'id' ? 'EN' : 'ID';
+  localStorage.setItem('lang', lang);
+  renderWork();
+  renderBrands();
+}
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+  applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+});
+document.getElementById('langToggle').addEventListener('click', () => {
+  applyLang(currentLang === 'id' ? 'en' : 'id');
+});
+
+/* =========================================================
+   RENDER — dipanggil ulang tiap ganti bahasa
+   ========================================================= */
+const workList = document.getElementById('workList');
+const brandGrid = document.getElementById('brandGrid');
+const tileHues = [70, 82, 60, 90, 50, 100, 65, 78, 55, 95];
+let firstRender = true;
+
+const mockDashHTML = (name) => `
+  <div class="mock-dash">
+    <div class="side"><i></i><i style="width:50%"></i><i style="width:65%"></i><i style="width:40%"></i></div>
+    <div class="main">
+      <div class="row w60"></div>
+      <div class="row w80"></div>
+      <div class="cards"><em></em><em></em><em></em></div>
+    </div>
+  </div>
+  <span class="mock-initial">${name.charAt(0)}</span>
+`;
+
+function renderWork(){
+  workList.innerHTML = '';
+  const visitText = currentLang === 'id' ? 'Kunjungi Situs' : 'Visit the Site';
+
+  webProjects.forEach(p => {
+    const row = document.createElement('div');
+    row.className = firstRender ? 'work-row reveal' : 'work-row reveal in-view';
+
+    const preview = p.image
+      ? `<img src="${p.image}" alt="${p.name}">`
+      : mockDashHTML(p.name);
+
+    const zoomBtn = p.image ? `<button class="zoom-btn" data-img="${p.image}" data-alt="${p.name}" aria-label="Perbesar gambar">🔍</button>` : '';
+    const year = currentLang === 'id' ? p.yearId : p.year;
+    const category = currentLang === 'id' ? p.categoryId : p.category;
+    const description = currentLang === 'id' ? p.descriptionId : p.description;
+
+    row.innerHTML = `
+      <div class="work-media">
+        <div class="browser-bar">
+          <i></i><i></i><i></i>
+          <span class="browser-url mono">${p.domain}</span>
+        </div>
+        <div class="work-preview">
+          ${preview}
+          ${zoomBtn}
+        </div>
+      </div>
+      <div class="work-content">
+        <div class="w-meta">
+          <span class="w-year mono">${year}</span>
+          <span class="w-cat">${category}</span>
+        </div>
+        <h3>${p.name}</h3>
+        <p class="w-desc">${description}</p>
+        <div class="tag-row">${p.tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}</div>
+        <a href="${p.url}" class="link-arrow" target="_blank" rel="noopener">${visitText} <span class="arrow">↗</span></a>
+      </div>
+    `;
+    workList.appendChild(row);
+  });
+}
+
+function renderBrands(){
+  brandGrid.innerHTML = '';
+  const instaText = currentLang === 'id' ? 'Lihat Instagram' : 'View Instagram';
+
+  brands.forEach((b, i) => {
+    const tile = document.createElement('div');
+    tile.className = 'brand-tile';
+    tile.style.background = b.image ? '#12140d' : `hsl(${tileHues[i % tileHues.length]}, 45%, 16%)`;
+
+    const art = b.image
+      ? `<img src="${b.image}" alt="${b.name}">`
+      : `<div class="fallback-letter" style="color:hsl(${tileHues[i % tileHues.length]},70%,72%)">${b.name.charAt(0)}</div>`;
+
+    const zoomBtn = b.image ? `<button class="zoom-btn" data-img="${b.image}" data-alt="${b.name}" aria-label="Perbesar gambar">🔍</button>` : '';
+
+    tile.innerHTML = `
+      ${art}
+      ${zoomBtn}
+      <div class="overlay">
+        <span class="bname">${b.name}</span>
+        <a href="${b.link}" class="link-arrow" target="_blank" rel="noopener">${instaText} <span class="arrow">↗</span></a>
+      </div>
+    `;
+    brandGrid.appendChild(tile);
+  });
+}
+
+applyTheme(currentTheme);
+applyLang(currentLang);
+firstRender = false;
+
+// --- lightbox ---
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+function openLightbox(src, alt){
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || '';
+  lightbox.classList.add('open');
+}
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  lightboxImg.src = '';
+}
+document.addEventListener('click', (e) => {
+  const zoomBtn = e.target.closest('.zoom-btn');
+  if(zoomBtn){
+    e.preventDefault();
+    e.stopPropagation();
+    openLightbox(zoomBtn.dataset.img, zoomBtn.dataset.alt);
+  }
+});
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox(); });
+
+// --- mobile nav toggle ---
+const navToggle = document.getElementById('navToggle');
+const mobilePanel = document.getElementById('mobilePanel');
+navToggle.addEventListener('click', () => {
+  const open = mobilePanel.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', open);
+});
+mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobilePanel.classList.remove('open');
+}));
+
+// --- scroll reveal ---
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduceMotion && 'IntersectionObserver' in window){
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if(entry.isIntersecting){
+        entry.target.style.transitionDelay = (idx % 4) * 60 + 'ms';
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+}
+
+// --- contact form -> whatsapp ---
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const nama  = document.getElementById('f-nama').value.trim();
+  const hp    = document.getElementById('f-hp').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const pesan = document.getElementById('f-pesan').value.trim();
+
+  const text = `Halo Naufal, saya ${nama} ingin mendiskusikan proyek.\n\n` +
+               `Email: ${email}\n` +
+               `No HP: ${hp}\n\n` +
+               `Pesan:\n${pesan}`;
+
+  const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+
+  document.getElementById('formStatus').style.display = 'block';
+  window.open(waUrl, '_blank');
+
+  this.reset();
+});
+</script>
+
+</body>
+</html>
