@@ -811,10 +811,22 @@ const webProjects = [
     description: "A platform for manufacturing container booths and sales carts, built using pure HTML, CSS, and JS, featuring custom functionality, SEO-friendly clean URLs, and a user interface (UI).",
     descriptionId: "Platform untuk manufaktur booth kontainer dan gerobak jualan, dibangun dengan HTML, CSS, dan JS murni, dengan fungsi khusus, clean URL SEO-friendly, dan antarmuka pengguna (UI).",
     image: "web/fgwegrwtwt.png"
+  },
+  {
+    name: "Aureva Sccent",
+    url: "https://aurevascentid.github.io/aurevascent/",
+    domain: "aurevascentid.github.io/aurevascent/",
+    year: "2025 - Now",
+    yearId: "2025 — Sekarang",
+    category: "Static Site",
+    categoryId: "Situs Statis",
+    tags: ["Static", "GitHub Pages", "HTML, CSS", "JS"],
+    description: "A perfume company profile platform built using HTML, CSS, and vanilla JavaScript, featuring specialized functionality, clean SEO-friendly URLs, and a user interface (UI).",
+    descriptionId: "Platform profile perusahaan parfum, dibangun dengan HTML, CSS, dan JS murni, dengan fungsi khusus, clean URL SEO-friendly, dan antarmuka pengguna (UI).",
+    image: "web/dwqodqwjdiqwe.png"
   }
 ];
 
-// Brand desain grafis. "image" boleh dikosongkan -> otomatis pakai warna + huruf awal.
 const brands = [
   { name: "Djalan Kopi", link: "https://www.instagram.com/djalan.kopi/", image: "brand/dj.png" },
   { name: "Aureva Scent", link: "https://www.instagram.com/aureva.scnt/", image: "brand/au.png" },
@@ -828,13 +840,8 @@ const brands = [
   { name: "Tangan Kanan Coffee", link: "https://www.instagram.com/tangankanan.coffee/", image: "brand/taka.png" }
 ];
 
-/* ========================================================= */
-
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* =========================================================
-   BAHASA (ID/EN) & TEMA (Gelap/Terang)
-   ========================================================= */
 let currentLang = localStorage.getItem('lang') || 'en';
 let currentTheme = localStorage.getItem('theme') ||
   (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -871,9 +878,6 @@ document.getElementById('langToggle').addEventListener('click', () => {
   applyLang(currentLang === 'id' ? 'en' : 'id');
 });
 
-/* =========================================================
-   RENDER — dipanggil ulang tiap ganti bahasa
-   ========================================================= */
 const workList = document.getElementById('workList');
 const brandGrid = document.getElementById('brandGrid');
 const tileHues = [70, 82, 60, 90, 50, 100, 65, 78, 55, 95];
@@ -965,7 +969,6 @@ applyTheme(currentTheme);
 applyLang(currentLang);
 firstRender = false;
 
-// --- lightbox ---
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
 function openLightbox(src, alt){
@@ -989,7 +992,6 @@ document.getElementById('lightboxClose').addEventListener('click', closeLightbox
 lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
 document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox(); });
 
-// --- mobile nav toggle ---
 const navToggle = document.getElementById('navToggle');
 const mobilePanel = document.getElementById('mobilePanel');
 navToggle.addEventListener('click', () => {
@@ -1000,7 +1002,6 @@ mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () =>
   mobilePanel.classList.remove('open');
 }));
 
-// --- scroll reveal ---
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!reduceMotion && 'IntersectionObserver' in window){
   const io = new IntersectionObserver((entries) => {
@@ -1017,7 +1018,6 @@ if(!reduceMotion && 'IntersectionObserver' in window){
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
 }
 
-// --- contact form -> whatsapp ---
 document.getElementById('contactForm').addEventListener('submit', function (e) {
   e.preventDefault();
 
