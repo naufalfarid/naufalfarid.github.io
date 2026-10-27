@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sinar Daya Listrik – Belanja Perlengkapan Listrik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--soft:#F4F7F5;--ink:#0F1B16;--muted:#5E6B65;--line:#E3E9E5;--brand:#0A7B55;--brand2:#E6F4EE;--promo:#FF5A36;--r:14px;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:130px}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 15px/1.55 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.topbar{background:var(--brand);color:#fff;font-size:13px;text-align:center;padding:7px 12px;font-weight:600}
+header{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.bar{display:flex;align-items:center;gap:20px;height:70px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px;letter-spacing:-.02em;white-space:nowrap}
+.logo i{width:32px;height:32px;border-radius:10px;background:var(--brand);display:grid;place-items:center}
+.search{flex:1;display:flex;background:var(--soft);border:1.5px solid transparent;border-radius:12px;overflow:hidden}
+.search:focus-within{border-color:var(--brand);background:var(--bg)}
+.search input{flex:1;border:0;background:none;padding:12px 16px;outline:0;min-width:0}
+.search span{display:grid;place-items:center;padding:0 14px;color:var(--muted)}
+.iconbtn{position:relative;display:flex;align-items:center;gap:8px;background:none;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:700}
+.iconbtn:hover{border-color:var(--ink)}
+.count{min-width:20px;height:20px;border-radius:10px;background:var(--promo);color:#fff;font-size:12px;display:grid;place-items:center;padding:0 5px}
+.cats{display:flex;gap:8px;overflow-x:auto;padding:12px 0;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1.5px solid var(--line);background:var(--bg);border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px;color:var(--muted)}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+
+/* banner */
+.hero{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin:22px 0}
+.slider{position:relative;overflow:hidden;border-radius:20px;min-height:280px}
+.track{display:flex;height:100%;transition:transform .5s ease}
+.slide{flex:none;width:100%;padding:44px;display:flex;flex-direction:column;justify-content:center;gap:12px;color:#fff;min-height:280px}
+.slide h2{margin:0;font-size:clamp(26px,3.6vw,42px);line-height:1.08;letter-spacing:-.03em;font-weight:800;max-width:440px}
+.slide p{margin:0;max-width:380px;opacity:.92}
+.slide .tag{align-self:flex-start;background:rgba(255,255,255,.2);padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700}
+.slide a{align-self:flex-start;background:#fff;color:#0F1B16;padding:11px 20px;border-radius:999px;font-weight:700;margin-top:6px}
+.s1{background:linear-gradient(120deg,#0A7B55,#12A678)}
+.s2{background:linear-gradient(120deg,#FF5A36,#FF8A4C)}
+.s3{background:linear-gradient(120deg,#1B2A4A,#2F4B86)}
+.dots{position:absolute;left:44px;bottom:18px;display:flex;gap:6px}
+.dots button{width:8px;height:8px;border-radius:4px;border:0;background:rgba(255,255,255,.5);padding:0;transition:width .2s}
+.dots button[aria-current="true"]{width:24px;background:#fff}
+.side{display:grid;gap:14px}
+.mini{border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.mini b{font-size:19px;letter-spacing:-.02em;line-height:1.2}
+.mini span{font-size:14px;color:var(--muted)}
+.m1{background:var(--brand2)}.m2{background:#FFF1EC}
+
+/* perks */
+.perks{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:44px}
+.perk{display:flex;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r)}
+.perk svg{width:26px;height:26px;stroke:var(--brand);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.perk b{display:block;font-size:14px;line-height:1.3}
+.perk span{font-size:12.5px;color:var(--muted)}
+
+/* flash */
+.flash{background:var(--promo);color:#fff;border-radius:20px;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.flash h2{margin:0;font-size:22px;letter-spacing:-.02em}
+.flash p{margin:0;opacity:.9;font-size:14px}
+.timer{display:flex;gap:6px;font-weight:800;font-variant-numeric:tabular-nums}
+.timer span{background:#fff;color:var(--promo);border-radius:8px;padding:6px 10px;min-width:42px;text-align:center;font-size:18px}
+
+/* produk */
+.sec-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 18px;flex-wrap:wrap}
+.sec-head h2{margin:0;font-size:24px;letter-spacing:-.02em}
+select{border:1.5px solid var(--line);background:var(--bg);border-radius:10px;padding:9px 12px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--bg);transition:box-shadow .2s,border-color .2s}
+.card:hover{border-color:var(--brand);box-shadow:0 8px 24px -12px rgba(10,123,85,.35)}
+.img{position:relative;aspect-ratio:1;display:grid;place-items:center}
+.img svg{width:38%;height:38%;stroke:var(--ink);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:.75}
+.off{position:absolute;left:10px;top:10px;background:var(--promo);color:#fff;font-size:12px;font-weight:800;padding:3px 8px;border-radius:8px}
+.heart{position:absolute;right:8px;top:8px;width:34px;height:34px;border-radius:50%;border:0;background:var(--bg);display:grid;place-items:center}
+.heart svg{width:18px;height:18px;opacity:1;width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2}
+.heart[aria-pressed="true"] svg{fill:var(--promo);stroke:var(--promo)}
+.body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
+.name{font-weight:600;font-size:14px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:38px}
+.price{font-weight:800;font-size:17px;margin-top:4px}
+.old{font-size:12.5px;color:var(--muted);text-decoration:line-through;min-height:19px}
+.meta{font-size:12.5px;color:var(--muted)}
+.add{margin-top:10px;border:1.5px solid var(--brand);background:var(--bg);color:var(--brand);border-radius:10px;padding:9px;font-weight:700}
+.add:hover{background:var(--brand);color:#fff}
+.empty{grid-column:1/-1;text-align:center;padding:56px 16px;color:var(--muted);background:var(--soft);border-radius:var(--r)}
+
+/* kalkulator */
+.calc{margin:64px 0;background:var(--soft);border-radius:24px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.calc h2{margin:0 0 10px;font-size:28px;letter-spacing:-.02em;line-height:1.15}
+.calc p{margin:0;color:var(--muted)}
+.calc label{display:block;font-weight:700;margin-bottom:8px}
+.calc input{width:100%;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:13px 16px;font-size:18px;font-weight:700}
+.res{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.res div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px}
+.res small{display:block;color:var(--muted);font-size:12px}
+.res b{font-size:20px}
+.note{font-size:12.5px;margin-top:12px!important}
+.lnk{background:none;border:0;color:var(--brand);font-weight:700;padding:0;margin-top:10px;text-decoration:underline}
+
+/* kontak */
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:56px}
+.contact div{border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.contact small{color:var(--muted);display:block}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* keranjang */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);z-index:50;transform:translateX(100%);transition:transform .3s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body.open .scrim{opacity:1;pointer-events:auto}
+body.open .drawer{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+.dh h2{margin:0;font-size:19px}
+.x{border:0;background:var(--soft);width:36px;height:36px;border-radius:50%;font-size:18px}
+.items{flex:1;overflow:auto;padding:8px 20px}
+.it{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:center}
+.it .th{width:52px;height:52px;border-radius:10px;flex:none;display:grid;place-items:center}
+.it .th svg{width:24px;height:24px;stroke:var(--ink);fill:none;stroke-width:1.5;opacity:.7}
+.it div.t{flex:1;min-width:0;font-size:14px}
+.it b{display:block;line-height:1.3}
+.step{display:flex;align-items:center;gap:8px;margin-top:6px}
+.step button{width:26px;height:26px;border-radius:8px;border:1px solid var(--line);background:var(--bg);padding:0}
+.df{padding:18px 20px;border-top:1px solid var(--line);display:grid;gap:12px}
+.tot{display:flex;justify-content:space-between;font-weight:800;font-size:18px}
+.wa{display:block;text-align:center;background:var(--brand);color:#fff;border-radius:12px;padding:14px;font-weight:700}
+.wa[aria-disabled="true"]{opacity:.4;pointer-events:none}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:var(--bg);padding:11px 20px;border-radius:999px;font-weight:600;opacity:0;transition:.25s;z-index:60;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:960px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.side{grid-template-columns:1fr 1fr}.perks{grid-template-columns:repeat(2,1fr)}.calc{grid-template-columns:1fr;padding:28px 22px}}
+@media (max-width:640px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}.logo span{display:none}.iconbtn .lbl{display:none}.slide{padding:28px 24px}.dots{left:24px}.contact{grid-template-columns:1fr}.side{grid-template-columns:1fr}.flash{padding:18px}.bar{gap:10px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="topbar">Gratis ongkir untuk pembelian di atas Rp300.000 area Semarang</div>
+<header>
+  <div class="wrap">
+    <div class="bar">
+      <a class="logo" href="#top"><i><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></i><span>Sinar Daya Listrik</span></a>
+      <label class="search" aria-label="Cari produk">
+        <input id="q" type="search" placeholder="Cari kabel, saklar, lampu, MCB...">
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+      </label>
+      <button class="iconbtn" id="openCart" aria-label="Buka keranjang">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.5 11h10L20 7H6.5"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>
+        <span class="lbl">Keranjang</span><span class="count" id="count">0</span>
+      </button>
+    </div>
+    <div class="cats" id="cats" role="group" aria-label="Kategori"></div>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <section class="hero" aria-label="Promo">
+    <div class="slider" id="slider">
+      <div class="track" id="track">
+        <div class="slide s1"><span class="tag" data-edit="b1-tag">Promo bulan ini</span><h2 data-edit="b1-title">Diskon sampai 30% kabel & MCB</h2><p data-edit="b1-desc">Lengkapi instalasi rumah dengan harga lebih hemat.</p><a href="#produk" data-cat="Semua">Belanja sekarang</a></div>
+        <div class="slide s2"><span class="tag" data-edit="b2-tag">Hemat daya</span><h2 data-edit="b2-title">Lampu LED mulai Rp15.000</h2><p data-edit="b2-desc">Awet, terang, dan menekan tagihan listrik.</p><a href="#produk" data-cat="Lampu">Lihat lampu</a></div>
+        <div class="slide s3"><span class="tag" data-edit="b3-tag">Untuk kontraktor</span><h2 data-edit="b3-title">Harga khusus pembelian partai</h2><p data-edit="b3-desc">Minta penawaran lewat WhatsApp, faktur tersedia.</p><a href="#kontak">Minta penawaran</a></div>
+      </div>
+      <div class="dots" id="dots"></div>
+    </div>
+    <div class="side">
+      <div class="mini m1"><b data-edit="side1-title">Konsultasi gratis</b><span data-edit="side1-desc">Bingung pilih ukuran kabel? Pakai kalkulator di bawah atau tanya tim kami.</span></div>
+      <div class="mini m2"><b data-edit="side2-title">Garansi barang original</b><span data-edit="side2-desc">Bergaransi resmi dari distributor.</span></div>
+    </div>
+  </section>
+
+  <section class="perks" aria-label="Keunggulan">
+    <div class="perk"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><div><b>Original & SNI</b><span>Bergaransi</span></div></div>
+    <div class="perk"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><div><b>Kirim cepat</b><span>Hari yang sama</span></div></div>
+    <div class="perk"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 1 3 6.2L4 20z"/></svg><div><b>Konsultasi</b><span>Via WhatsApp</span></div></div>
+    <div class="perk"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg><div><b>Faktur resmi</b><span>Untuk proyek</span></div></div>
+  </section>
+
+  <section class="flash" aria-label="Flash sale">
+    <div><h2>Flash sale hari ini</h2><p>Harga coret berlaku sampai stok habis atau waktu berakhir.</p></div>
+    <div class="timer" id="timer" aria-live="off"><span>00</span><span>00</span><span>00</span></div>
+  </section>
+
+  <section id="produk">
+    <div class="sec-head">
+      <h2 id="ptitle">Semua produk</h2>
+      <select id="sort" aria-label="Urutkan">
+        <option value="pop">Terlaris</option><option value="low">Harga terendah</option><option value="high">Harga tertinggi</option><option value="disc">Diskon terbesar</option>
+      </select>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="calc" id="kalkulator">
+    <div>
+      <h2>Kalkulator kebutuhan listrik</h2>
+      <p>Masukkan total daya peralatan di satu jalur. Kami hitung perkiraan arus, MCB, dan ukuran kabel yang cocok.</p>
+    </div>
+    <div>
+      <label for="watt">Total daya (watt)</label>
+      <input id="watt" type="number" inputmode="numeric" min="0" placeholder="Contoh: 1800">
+      <div class="res" id="res" hidden>
+        <div><small>Arus</small><b id="rA">-</b></div>
+        <div><small>MCB</small><b id="rM">-</b></div>
+        <div><small>Kabel</small><b id="rK">-</b></div>
+      </div>
+      <p class="note" id="rn" hidden>Hanya perkiraan untuk tegangan 220 V. Pastikan pemasangan oleh teknisi berpengalaman.</p>
+      <button class="lnk" id="toMcb" hidden>Lihat MCB yang cocok</button>
+    </div>
+  </section>
+
+  <section id="kontak" class="contact" aria-label="Kontak">
+    <div><small>Alamat toko</small><b data-edit="address">Jl. Contoh Raya No. 12, Semarang</b></div>
+    <div><small>Jam buka</small><b data-edit="hours">Senin–Sabtu, 08.00–17.00 WIB</b></div>
+    <div><small>WhatsApp</small><b data-edit="phone">0812-3456-7890</b></div>
+  </section>
+</main>
+<footer><div class="wrap"><span>© 2026 Sinar Daya Listrik</span><span>Perlengkapan listrik untuk rumah dan proyek</span></div></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Keranjang belanja" aria-hidden="true">
+  <div class="dh"><h2>Keranjang</h2><button class="x" id="closeCart" aria-label="Tutup">×</button></div>
+  <div class="items" id="items"></div>
+  <div class="df"><div class="tot"><span>Total</span><span id="total">Rp0</span></div><a class="wa" id="wa" target="_blank" rel="noopener" aria-disabled="true">Pesan lewat WhatsApp</a></div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const WA="6281234567890";
+const IC={Kabel:'<path d="M3 12h4l2-6 4 12 2-6h6"/>',Saklar:'<rect x="5" y="3" width="14" height="18" rx="3"/><path d="M12 8v3"/><circle cx="12" cy="15" r="1.5"/>',Lampu:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/>',MCB:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9v6M12 9v6M16 9v6"/>',Perkakas:'<path d="M14 7 7 14l3 3 7-7M5 19l3-3M15 5l4 4"/>',Pompa:'<path d="M4 17V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8M2 17h20M8 21h8"/>'};
+const TINT={Kabel:'#E6F4EE',Saklar:'#EEF0FA',Lampu:'#FFF6DB',MCB:'#FFEDE7',Perkakas:'#EAF4FB',Pompa:'#EDF7E8'};
+const P=[
+[1,"Kabel NYM 2x1,5 mm² (50 m)","Kabel",385000,450000,4.9,1240,"nym"],
+[2,"Kabel NYA 1,5 mm² roll 100 m","Kabel",540000,620000,4.8,860,"nya"],
+[3,"Saklar Tunggal Inbow Putih","Saklar",18000,0,4.7,3100,"saklar"],
+[4,"Stop Kontak 3 Lubang Arde","Saklar",24500,29000,4.8,2200,"stop kontak"],
+[5,"Lampu LED 12W Cahaya Putih","Lampu",22000,28000,4.9,5400,"led bohlam"],
+[6,"Downlight LED Panel 9W Slim","Lampu",39000,0,4.7,1900,"downlight"],
+[7,"MCB 1 Fasa 10A","MCB",32000,38000,4.8,1500,"mcb 10a"],
+[8,"MCB 1 Fasa 16A","MCB",34000,40000,4.8,2100,"mcb 16a"],
+[9,"Box Panel MCB 4 Group","MCB",65000,0,4.6,640,"panel box"],
+[10,"Tespen Digital Non-Kontak","Perkakas",15000,0,4.5,2700,"tespen"],
+[11,"Multimeter Digital Lengkap","Perkakas",95000,120000,4.7,980,"multimeter"],
+[12,"Pompa Air Dorong 125 W","Pompa",485000,550000,4.8,420,"pompa air"]
+].map(a=>({id:a[0],name:a[1],cat:a[2],price:a[3],old:a[4],rate:a[5],sold:a[6],tag:a[7]}));
+const $=s=>document.querySelector(s),rp=n=>"Rp"+n.toLocaleString("id-ID");
+const svg=(c)=>`<svg viewBox="0 0 24 24" aria-hidden="true">${IC[c]}</svg>`;
+let cat="Semua",cart={},fav=new Set();
+const cats=["Semua",...Object.keys(IC)];
+$("#cats").innerHTML=cats.map(c=>`<button class="chip" data-c="${c}" aria-pressed="${c==="Semua"}">${c}</button>`).join("");
+function setCat(c){cat=c;document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===c));render()}
+$("#cats").onclick=e=>{const b=e.target.closest(".chip");if(b)setCat(b.dataset.c)};
+function render(){
+  const q=$("#q").value.trim().toLowerCase(),s=$("#sort").value;
+  let l=P.filter(p=>(cat==="Semua"||p.cat===cat)&&(p.name+" "+p.tag+" "+p.cat).toLowerCase().includes(q));
+  const d=p=>p.old?(p.old-p.price)/p.old:0;
+  l.sort((a,b)=>s==="low"?a.price-b.price:s==="high"?b.price-a.price:s==="disc"?d(b)-d(a):b.sold-a.sold);
+  $("#ptitle").textContent=(cat==="Semua"?"Semua produk":cat)+" ("+l.length+")";
+  $("#grid").innerHTML=l.length?l.map(p=>`<article class="card"><div class="img" style="background:${TINT[p.cat]}" data-edit-img="p${p.id}">${svg(p.cat)}${p.old?`<span class="off">-${Math.round(d(p)*100)}%</span>`:""}<button class="heart" data-f="${p.id}" aria-label="Simpan ke favorit" aria-pressed="${fav.has(p.id)}"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></button></div><div class="body"><div class="name">${p.name}</div><div class="price">${rp(p.price)}</div><div class="old">${p.old?rp(p.old):""}</div><div class="meta">★ ${p.rate} · Terjual ${p.sold>=1000?(p.sold/1000).toFixed(1).replace(".",",")+"rb":p.sold}</div><button class="add" data-a="${p.id}">Tambah ke keranjang</button></div></article>`).join(""):`<div class="empty">Produk tidak ditemukan. Coba kata kunci lain atau hubungi kami lewat WhatsApp.</div>`;
+}
+$("#q").oninput=render;$("#sort").onchange=render;
+$("#grid").onclick=e=>{
+  const a=e.target.closest("[data-a]"),f=e.target.closest("[data-f]");
+  if(a){const id=+a.dataset.a;cart[id]=(cart[id]||0)+1;drawCart();toast("Ditambahkan ke keranjang")}
+  if(f){const id=+f.dataset.f;fav.has(id)?fav.delete(id):fav.add(id);f.setAttribute("aria-pressed",fav.has(id))}
+};
+function drawCart(){
+  const ids=Object.keys(cart).map(Number),n=ids.reduce((s,i)=>s+cart[i],0);
+  const tot=ids.reduce((s,i)=>s+cart[i]*P.find(p=>p.id===i).price,0);
+  $("#count").textContent=n;$("#total").textContent=rp(tot);
+  $("#items").innerHTML=ids.length?ids.map(i=>{const p=P.find(x=>x.id===i);return `<div class="it"><div class="th" style="background:${TINT[p.cat]}">${svg(p.cat)}</div><div class="t"><b>${p.name}</b>${rp(p.price)}<div class="step"><button data-m="${i}" aria-label="Kurangi">−</button>${cart[i]}<button data-p="${i}" aria-label="Tambah">+</button></div></div></div>`}).join(""):`<div class="empty" style="margin-top:24px">Keranjang masih kosong. Pilih produk lalu tekan Tambah ke keranjang.</div>`;
+  const msg="Halo Sinar Daya Listrik, saya ingin memesan:\n"+ids.map(i=>{const p=P.find(x=>x.id===i);return `- ${p.name} x${cart[i]}`}).join("\n")+"\nTotal: "+rp(tot);
+  const w=$("#wa");w.href=ids.length?`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`:"#";w.setAttribute("aria-disabled",!ids.length);
+}
+$("#items").onclick=e=>{const m=e.target.dataset.m,p=e.target.dataset.p;
+  if(m){cart[m]--;if(cart[m]<1)delete cart[m]}if(p)cart[p]++;drawCart()};
+const open=v=>{document.body.classList.toggle("open",v);$("#drawer").setAttribute("aria-hidden",!v)};
+$("#openCart").onclick=()=>open(true);$("#closeCart").onclick=$("#scrim").onclick=()=>open(false);
+document.onkeydown=e=>{if(e.key==="Escape")open(false)};
+let tt;function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("on"),1600)}
+/* slider */
+let si=0;const N=3;
+$("#dots").innerHTML=[...Array(N)].map((_,i)=>`<button aria-label="Slide ${i+1}"></button>`).join("");
+function go(i){si=(i+N)%N;$("#track").style.transform=`translateX(-${si*100}%)`;[...$("#dots").children].forEach((d,k)=>d.setAttribute("aria-current",k===si))}
+$("#dots").onclick=e=>{const k=[...$("#dots").children].indexOf(e.target);if(k>=0)go(k)};
+go(0);
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches){let h=0;$("#slider").onmouseenter=()=>h=1;$("#slider").onmouseleave=()=>h=0;setInterval(()=>{if(!h)go(si+1)},5000)}
+document.querySelectorAll("[data-cat]").forEach(a=>a.addEventListener("click",()=>setCat(a.dataset.cat)));
+/* timer */
+function tick(){const n=new Date(),e=new Date(n);e.setHours(23,59,59,999);let s=Math.floor((e-n)/1000);
+  const v=[Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(x=>String(x).padStart(2,"0"));
+  [...$("#timer").children].forEach((c,i)=>c.textContent=v[i])}
+tick();setInterval(tick,1000);
+/* kalkulator */
+$("#watt").oninput=()=>{
+  const w=+$("#watt").value,ok=w>0;["#res","#rn","#toMcb"].forEach(s=>$(s).hidden=!ok);if(!ok)return;
+  const A=w/220,need=A*1.25,mcb=[2,4,6,10,16,20,25,32,40,50,63].find(x=>x>=need)||63;
+  const k=mcb<=10?"1,5 mm²":mcb<=16?"2,5 mm²":mcb<=25?"4 mm²":mcb<=32?"6 mm²":"10 mm²";
+  $("#rA").textContent=A.toFixed(1).replace(".",",")+" A";$("#rM").textContent=mcb+" A";$("#rK").textContent=k;
+};
+$("#toMcb").onclick=()=>{setCat("MCB");$("#produk").scrollIntoView()};
+render();drawCart();
+</script>
+</body>
+</html>
